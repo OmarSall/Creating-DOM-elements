@@ -44,3 +44,32 @@ button {
     box-sizing: border-box;
     padding: 5px;
 }
+
+.task {
+    padding: 10px;
+    margin: 5px;
+    background: #f4f4f4;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  
+button.delete, button.move {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button.delete {
+    color: red;
+  }
+  
+  button.move {
+    color: green;
+  }
+  
+  button.delete:hover, button.move:hover {
+    opacity: 0.7;
+  }
