@@ -36,9 +36,10 @@ function createBusinessCard(person) {
                 <div class="name-container-credentials">
                     <div class="name-container-name">${person.firstName}</div>
                     <div class="name-container-surname">${person.lastName.toUpperCase()}</div>
-                    <button class="remove-button">Remove</button>
                 </div>
                 <div class="name-container-job">${person.profession.toUpperCase()}</div>
+                <button class="remove-button">Remove</button>
+                <button class="clone-button">Clone</button>
             </div>
             <div class="contact-container">
                 <ul class="contact-container-unordered-list">
@@ -70,7 +71,28 @@ function createBusinessCard(person) {
         card.remove();
     });
 
+    const cloneButton = card.querySelector(".clone-button");
+    cloneButton.addEventListener("click", () => {
+        const clonedCard = card.cloneNode(true);
+        attachCardEvents(clonedCard);
+        cardsContainer.append(clonedCard);
+});
+
     cardsContainer.append(card);
+}
+
+function attachCardEvents(card) {
+    const removeButton = card.querySelector(".remove-button");
+    removeButton.addEventListener("click", () => {
+        card.remove();
+    });
+
+    const cloneButton = card.querySelector(".clone-button");
+    cloneButton.addEventListener("click", () => {
+        const clonedCard = card.cloneNode(true);
+        attachCardEvents(clonedCard);
+        cardsContainer.append(clonedCard);
+    });
 }
 
 people.forEach(createBusinessCard);
